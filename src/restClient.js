@@ -37,7 +37,7 @@ export default (client, options = {}) => {
       case GET_LIST:
         const {page, perPage} = params.pagination || {}
         const {field, order} = params.sort || {}
-        const sortKey = `$sort[${field === 'id' ? idKey : field}]`
+        const sortKey = `$sort`;
         dbg('field=%o, sort-key=%o', field, sortKey)
         let sortVal = order === 'DESC' ? -1 : 1
         if (perPage && page) {
@@ -45,7 +45,9 @@ export default (client, options = {}) => {
           query['$skip'] = perPage * (page - 1)
         }
         if (order) {
-          query[sortKey] = JSON.stringify(sortVal)
+          const orderKey = field === 'id' ? idKey : field;
+          query[sortKey] = {};
+          query[sortKey][orderKey] = sortVal;
         }
         Object.assign(query, params.filter)
         dbg('query=%o', query)

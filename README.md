@@ -1,7 +1,9 @@
-# Feathers REST Client for Admin-on-rest
+# Feathers Websocket Client for Admin-on-rest
 
-The perfect match to build Backend and Frontend Admin, based on REST services.
+The perfect match to build Backend and Frontend Admin, based on Websocket services.
 For using [feathers](https://www.feathersjs.com) with [admin-on-rest](https://github.com/marmelab/admin-on-rest).
+
+This project is based on [aor-feathers-client](https://github.com/josx/aor-feathers-client) and modified to work with websockets.
 
 ## Features
 * GET_MANY_REFERENCE
@@ -94,12 +96,14 @@ For example,
 ```js
 // in src/feathersClient.js
 import feathers from 'feathers-client';
+import socketio from 'feathers-socketio/client';
+import io from 'socket.io-client';
 
 const host = 'http://localhost:3030';
 
 export default feathers()
     .configure(feathers.hooks())
-    .configure(feathers.rest(host).fetch(window.fetch.bind(window)))
+    .configure(socketio(io(host)))
     .configure(feathers.authentication({ jwtStrategy: 'jwt', storage: window.localStorage }));
 ```
 
@@ -147,8 +151,6 @@ const App = () => (
 export default App;
 ```
 
-You can find a complete example in [https://github.com/kfern/feathers-aor-test-integration](https://github.com/kfern/feathers-aor-test-integration)
-
 ## License
 
-This software is licensed under the [MIT Licence](LICENSE), and sponsored by [Cambá](https://www.camba.coop).
+This software is licensed under the [MIT Licence](LICENSE).

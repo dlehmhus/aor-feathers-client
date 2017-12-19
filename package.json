@@ -1,7 +1,7 @@
 {
   "name": "aor-feathers-client",
-  "version": "0.8.0",
-  "description": "A feathers client for admin-on-rest",
+  "version": "0.0.1",
+  "description": "A websocket feathers client for admin-on-rest",
   "main": "lib/index.js",
   "scripts": {
     "pretest": "npm run build",
@@ -25,7 +25,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/josx/aor-feathers-client.git"
+    "url": "git+https://github.com/dlehmhus/aor-feathers-client"
   },
   "keywords": [
     "reactjs",
@@ -34,12 +34,7 @@
     "feathers",
     "local"
   ],
-  "author": "Jose Luis Di Biase",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/josx/aor-feathers-client/issues"
-  },
-  "homepage": "https://github.com/josx/aor-feathers-client#readme",
   "peerDependencies": {
     "admin-on-rest": "^1.0.1",
     "debug": "^3.0.0",
